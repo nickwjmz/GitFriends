@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">GitFriends</string>
+    <string name="tv_text_github_searcher">GitHub Searcher</string>
+    <string name="et_hint_search_for_github_user">Search For Users</string>
+</resources>

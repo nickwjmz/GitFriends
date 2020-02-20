@@ -1,4 +1,7 @@
-package com.example.gitfriends.model
+package com.example.gitfriends.model.dataclasses
+
+import com.example.gitfriends.model.dataclasses.License
+import com.example.gitfriends.model.dataclasses.Owner
 
 data class UserRepos(
     var archive_url: String,

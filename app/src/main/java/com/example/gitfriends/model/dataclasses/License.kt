@@ -1,4 +1,4 @@
-package com.example.gitfriends.model
+package com.example.gitfriends.model.dataclasses
 
 data class License(
     var key: String,

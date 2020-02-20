@@ -1,4 +1,6 @@
-package com.example.gitfriends.model
+package com.example.gitfriends.model.dataclasses
+
+import com.example.gitfriends.model.dataclasses.Item
 
 data class PokoUserQuery(
     var incomplete_results: Boolean,

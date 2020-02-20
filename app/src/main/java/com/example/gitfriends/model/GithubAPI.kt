@@ -1,25 +1,17 @@
 package com.example.gitfriends.model
 
+import com.example.gitfriends.model.dataclasses.PokoUserQuery
+import com.example.gitfriends.model.dataclasses.SingleUser
+import com.example.gitfriends.model.dataclasses.UserRepos
 import retrofit2.Call
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface GithubAPI {
-    // https://api.github.com/
-    // Example URL: search?q=kenya+in%3Alogin&type=Users
+    // user_repositories_url: "https://api.github.com/users/{user}/repos{?type,page,per_page,sort}",
+    // user_search_url: "https://api.github.com/search/users?q={query}{&page,per_page,sort,order}"
 
-    fun initRetrofit(): GithubAPI {
-        var retrofit = Retrofit.Builder()
-            .baseUrl("https://api.github.com/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-        var api = retrofit.create(GithubAPI::class.java)
-        return api
-    }
     /*
      * Find users via various criteria. This method returns up to 100 results per page.
      * Should be read from the search box in MainActivity and resubmitted every time
@@ -28,8 +20,10 @@ interface GithubAPI {
      * {octo in:login} matches users with the word "octo" in their username.
      * GET /search/users
      */
-    @GET("search")
-    fun getUserList(@Query("q") word: String) : Call<PokoUserQuery>
+    @GET("search/users")
+    fun getUserList(
+        @Query("q") word: String
+    ) : Call<PokoUserQuery>
 
 
     /*
@@ -39,7 +33,9 @@ interface GithubAPI {
      * GET /users/:username
      */
     @GET("users/{username}")
-    fun getSingleUser(@Path("username") username: String) : Call<SingleUser>
+    fun getSingleUser(
+        @Path("username") username: String
+    ) : Call<SingleUser>
 
 
     /*
@@ -49,6 +45,8 @@ interface GithubAPI {
      * GET /users/:username/repos
      */
     @GET("users/{username}/repos")
-    fun getUserRepos(@Path("username") username: String) : Call<UserRepos>
+    fun getUserRepos(
+        @Path("username") username: String
+    ): Call<UserRepos>
 
 }
